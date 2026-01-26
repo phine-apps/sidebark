@@ -55,12 +55,16 @@ const ShibaCompanion = ({
 
   useEffect(() => {
     if (reactionTrigger) {
-      if (reactionTrigger > 0) {
-        const phrases = [t('shibaBark'), t('shibaFound'), t('shibaSniff')]
-        speak(phrases[Math.floor(Math.random() * phrases.length)], 2000)
-      } else if (errorMessage) {
-        speak(errorMessage, 4000)
-      }
+      // Defer state updates to next tick to avoid synchronous setState in effect
+      const timeoutId = setTimeout(() => {
+        if (reactionTrigger > 0) {
+          const phrases = [t('shibaBark'), t('shibaFound'), t('shibaSniff')]
+          speak(phrases[Math.floor(Math.random() * phrases.length)], 2000)
+        } else if (errorMessage) {
+          speak(errorMessage, 4000)
+        }
+      }, 0)
+      return () => clearTimeout(timeoutId)
     }
   }, [reactionTrigger, errorMessage])
 
