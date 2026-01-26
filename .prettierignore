@@ -1,0 +1,8 @@
+dist
+node_modules
+legacy
+*.png
+*.jpg
+*.ico
+manifest.json
+package-lock.json

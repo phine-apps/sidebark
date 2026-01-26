@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+
+# IDE files
+.DS_Store
+*.swp
+*.log
+
+# Legacy and Metadata
+legacy/
+_metadata/
+
+# VS Code
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

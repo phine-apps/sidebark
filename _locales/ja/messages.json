@@ -1,0 +1,14 @@
+{
+  "appName": {
+    "message": "Sidebark",
+    "description": "拡張機能の名前"
+  },
+  "appDescription": {
+    "message": "ブラウザに寄り添う忠実な柴犬。プレミアムな汎用サイドバー。",
+    "description": "拡張機能の説明"
+  },
+  "actionTitle": {
+    "message": "Sidebarkを開く",
+    "description": "拡張機能アイコンのツールチップ"
+  }
+}

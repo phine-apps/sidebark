@@ -1,0 +1,14 @@
+{
+  "appName": {
+    "message": "Sidebark",
+    "description": "The name of the extension."
+  },
+  "appDescription": {
+    "message": "Your loyal Shiba companion in the browser. A premium universal sidebar.",
+    "description": "The description of the extension."
+  },
+  "actionTitle": {
+    "message": "Open Sidebark",
+    "description": "Tooltip for the extension icon."
+  }
+}

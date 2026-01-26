@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebark 日本語注釈オーバーレイ</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #f5f5f5;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .nav {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      .nav button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .nav button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      }
+
+      .nav button.active {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      }
+
+      .image-container {
+        display: none;
+        position: relative;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .image-container.active {
+        display: block;
+      }
+
+      .image-container img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Annotation styles */
+      .annotation-badge {
+        position: absolute;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 14px;
+        white-space: nowrap;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .annotation-box {
+        position: absolute;
+        padding: 16px 20px;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 1.8;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      }
+
+      .orange-gradient {
+        background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        color: white;
+      }
+
+      .purple-gradient {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .blue-gradient {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        color: white;
+      }
+
+      .yellow-gradient {
+        background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+        color: #333;
+      }
+
+      .teal-gradient {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        color: white;
+      }
+
+      .pink-gradient {
+        background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+        color: white;
+      }
+
+      .annotation-border {
+        position: absolute;
+        border: 3px solid;
+        border-radius: 12px;
+        pointer-events: none;
+      }
+
+      .border-purple {
+        border-color: #764ba2;
+        box-shadow: 0 0 15px rgba(118, 75, 162, 0.3);
+      }
+
+      .border-orange {
+        border-color: #f7931e;
+        box-shadow: 0 0 15px rgba(247, 147, 30, 0.3);
+      }
+
+      .border-blue {
+        border-color: #4facfe;
+        box-shadow: 0 0 15px rgba(79, 172, 254, 0.3);
+      }
+
+      .border-teal {
+        border-color: #11998e;
+        box-shadow: 0 0 15px rgba(17, 153, 142, 0.3);
+      }
+
+      .border-pink {
+        border-color: #ee0979;
+        box-shadow: 0 0 15px rgba(238, 9, 121, 0.3);
+      }
+
+      .red-x {
+        color: #ff3b30;
+        font-weight: bold;
+      }
+
+      .instructions {
+        text-align: center;
+        margin-top: 20px;
+        color: #666;
+        font-size: 14px;
+      }
+
+      /* Image 1: sidebar_url_registration */
+      #img1 {
+        width: 320px;
+      }
+
+      /* Image 2: sidebark_full_screen */
+      #img2 {
+        width: 1280px;
+      }
+
+      /* Image 3: sidebark_icon_focused */
+      #img3 {
+        width: 320px;
+      }
+
+      /* Image 4: sidebark_settings */
+      #img4 {
+        width: 320px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sidebark 日本語注釈オーバーレイ</h1>
+
+    <div class="nav">
+      <button onclick="showImage(1)" id="btn1">1. URL登録画面</button>
+      <button onclick="showImage(2)" id="btn2">2. フルスクリーン</button>
+      <button onclick="showImage(3)" id="btn3">3. アイコン説明</button>
+      <button onclick="showImage(4)" id="btn4">4. 設定画面</button>
+    </div>
+
+    <!-- Image 1: sidebar_url_registration -->
+    <div class="image-container" id="img1">
+      <img
+        src="file:///Users/oishik/apps/x-projects/images/sidebark/ja/sidebar_url_registration.png"
+        alt="URL登録画面"
+      />
+
+      <!-- Top annotation -->
+      <div
+        class="annotation-badge purple-gradient"
+        style="top: 280px; left: 50%; transform: translateX(-50%)"
+      >
+        現在のページをピン留めするか、URLを入力
+      </div>
+
+      <!-- Border around form area -->
+      <div
+        class="annotation-border border-purple"
+        style="top: 330px; left: 25px; right: 45px; height: 200px"
+      ></div>
+
+      <!-- Bottom annotation -->
+      <div
+        class="annotation-badge purple-gradient"
+        style="bottom: 10px; left: 50%; transform: translateX(-50%)"
+      >
+        クリックしてURLを追加 →
+      </div>
+    </div>
+
+    <!-- Image 2: sidebark_full_screen -->
+    <div class="image-container" id="img2">
+      <img
+        src="file:///Users/oishik/apps/x-projects/images/sidebark/ja/sidebark_full_screen.png"
+        alt="フルスクリーン"
+      />
+
+      <!-- Main Tab border -->
+      <div
+        class="annotation-border border-orange"
+        style="top: 5px; left: 5px; right: 350px; bottom: 5px"
+      ></div>
+
+      <!-- Sidebark Panel border -->
+      <div
+        class="annotation-border border-blue"
+        style="top: 5px; right: 52px; width: 295px; bottom: 5px"
+      ></div>
+
+      <!-- Sidebark Panel border -->
+      <div
+        class="annotation-border border-teal"
+        style="top: 5px; right: 0px; width: 50px; bottom: 5px"
+      ></div>
+
+      <!-- Main Tab label -->
+      <div
+        class="annotation-badge purple-gradient"
+        style="bottom: 150px; left: 660px"
+      >
+        メインタブ
+      </div>
+
+      <!-- App Dock label -->
+      <div
+        class="annotation-badge purple-gradient"
+        style="top: 300px; right: 0px"
+      >
+        アプリドック
+      </div>
+
+      <!-- Sidebark Panel label -->
+      <div
+        class="annotation-badge purple-gradient"
+        style="bottom: 20px; right: 150px"
+      >
+        Sidebarkパネル
+      </div>
+    </div>
+
+    <!-- Image 3: sidebark_icon_focused -->
+    <div class="image-container" id="img3">
+      <img
+        src="file:///Users/oishik/apps/x-projects/images/sidebark/ja/sidebark_icon_focused.png"
+        alt="アイコン説明"
+      />
+
+      <!-- Main explanation box -->
+      <div
+        class="annotation-box purple-gradient"
+        style="top: 180px; left: 20px; right: 20px"
+      >
+        アイコンをクリックでページを表示。<br />
+        アイコンにカーソルを合わせてタイトルを確認。<br />
+        <span class="red-x">✕</span>をクリックでサイトを削除。<br />
+        ドラッグ＆ドロップでアイコンを並べ替え。
+      </div>
+    </div>
+
+    <!-- Image 4: sidebark_settings -->
+    <div class="image-container" id="img4">
+      <img
+        src="file:///Users/oishik/apps/x-projects/images/sidebark/ja/sidebark_settings.png"
+        alt="設定画面"
+      />
+
+      <!-- Top annotation - click to open settings -->
+      <div
+        class="annotation-badge purple-gradient"
+        style="top: 10px; left: 50%; transform: translateX(-50%)"
+      >
+        クリックして設定を開く →
+      </div>
+
+    <script>
+      function showImage(num) {
+        // Hide all
+        document
+          .querySelectorAll('.image-container')
+          .forEach((el) => el.classList.remove('active'))
+        document
+          .querySelectorAll('.nav button')
+          .forEach((el) => el.classList.remove('active'))
+
+        // Show selected
+        document.getElementById('img' + num).classList.add('active')
+        document.getElementById('btn' + num).classList.add('active')
+      }
+
+      // Show first image by default
+      showImage(1)
+    </script>
+  </body>
+</html>
