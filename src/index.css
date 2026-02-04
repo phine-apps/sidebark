@@ -1,6 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-shiba: #f99a22;
+  --color-shiba-light: #fbc27b;
+  --color-shiba-dark: #c77b1b;
+
+  --color-theme-bg: var(--bg-main);
+  --color-theme-dock: var(--bg-dock);
+  --color-theme-card: var(--bg-card);
+  --color-theme-text: var(--text-main);
+  --color-theme-muted: var(--text-muted);
+  --color-theme-border: var(--border-dim);
+  --color-theme-bubble: var(--bubble-bg);
+  --color-theme-bubble-text: var(--bubble-text);
+  --color-theme-overlay: var(--overlay-bg);
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
